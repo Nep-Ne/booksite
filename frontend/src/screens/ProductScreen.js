@@ -116,7 +116,8 @@ function ProductScreen(props) {
               </ul>
             </div>
           </div>
-          <div className="content-margined">
+          {/* bỏ đoạn dưới vào sẽ dẫn đến lỗi vì chưa có dữ liệu !! */}
+          {/* <div className="content-margined">
             <h2>Reviews</h2>
             {!product.reviews.length && <div>There is no review</div>}
             <ul className="review" id="reviews">
@@ -172,7 +173,7 @@ function ProductScreen(props) {
                 )}
               </li>
             </ul>
-          </div>
+          </div> */}
         </>
       )}
     </div>
