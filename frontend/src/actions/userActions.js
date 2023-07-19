@@ -11,11 +11,14 @@ const update = ({ userId, name, email, password }) => async (dispatch, getState)
   dispatch({ type: USER_UPDATE_REQUEST, payload: { userId, name, email, password } });
   try {
     const { data } = await Axios.put("/api/users/" + userId,
+    //nguyên cái phần trong ngoặc comment dưới là việc tạo req của user
       { name, email, password }, {
       headers: {
-        Authorization: 'Bearer ' + userInfo.token
+        Authorization: 'Bearer ' + userInfo.token//đây là chỗ thêm cái tiêu đề Authorization vào phần req.header nên ta có req.header.authorization
       }
-    });
+    }
+    //
+    );
     dispatch({ type: USER_UPDATE_SUCCESS, payload: data });
     Cookie.set('userInfo', JSON.stringify(data));
   } catch (error) {
@@ -26,7 +29,11 @@ const update = ({ userId, name, email, password }) => async (dispatch, getState)
 const signin = (email, password) => async (dispatch) => {
   dispatch({ type: USER_SIGNIN_REQUEST, payload: { email, password } });
   try {
-    const { data } = await Axios.post("/api/users/signin", { email, password });
+    const { data } = await Axios.post("/api/users/signin",
+    //nguyên cái phần trong ngoặc comment dưới là việc tạo req của user
+     { email, password }
+    //
+     );
     dispatch({ type: USER_SIGNIN_SUCCESS, payload: data });
     Cookie.set('userInfo', JSON.stringify(data));
   } catch (error) {
@@ -37,7 +44,11 @@ const signin = (email, password) => async (dispatch) => {
 const register = (name, email, password) => async (dispatch) => {
   dispatch({ type: USER_REGISTER_REQUEST, payload: { name, email, password } });
   try {
-    const { data } = await Axios.post("/api/users/register", { name, email, password });
+    const { data } = await Axios.post("/api/users/register", 
+    //nguyên cái phần trong ngoặc comment dưới là việc tạo req của user
+    { name, email, password }
+    //
+    );
     dispatch({ type: USER_REGISTER_SUCCESS, payload: data });
     Cookie.set('userInfo', JSON.stringify(data));
   } catch (error) {
@@ -46,7 +57,7 @@ const register = (name, email, password) => async (dispatch) => {
 }
 
 const logout = () => (dispatch) => {
-  Cookie.remove("userInfo");
+  Cookie.remove('userInfo');
   dispatch({ type: USER_LOGOUT })
 }
 export { signin, register, logout, update };

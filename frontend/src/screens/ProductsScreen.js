@@ -13,12 +13,12 @@ function ProductsScreen(props) {
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
   const [image, setImage] = useState('');
-  const [brand, setBrand] = useState('');
-  const [category, setCategory] = useState('');
+ // const [brand, setBrand] = useState('');
+ // const [category, setCategory] = useState('');
   const [countInStock, setCountInStock] = useState('');
   const [description, setDescription] = useState('');
   const [uploading, setUploading] = useState(false);
-  const productList = useSelector((state) => state.productList);
+  const productList = useSelector((state) => state.productList);//productList co trong store.js la cai 1 phan cua reducer
   const { loading, products, error } = productList;
 
   const productSave = useSelector((state) => state.productSave);
@@ -53,8 +53,8 @@ function ProductsScreen(props) {
     setPrice(product.price);
     setDescription(product.description);
     setImage(product.image);
-    setBrand(product.brand);
-    setCategory(product.category);
+    //setBrand(product.brand);
+   // setCategory(product.category);
     setCountInStock(product.countInStock);
   };
   const submitHandler = (e) => {
@@ -65,8 +65,8 @@ function ProductsScreen(props) {
         name,
         price,
         image,
-        brand,
-        category,
+       // brand,
+        //category,
         countInStock,
         description,
       })
@@ -103,7 +103,7 @@ function ProductsScreen(props) {
           Create Product
         </button>
       </div>
-      {modalVisible && (
+      {modalVisible && (//khi nhan btn create Product phia tren thi se lam modalVisible=true
         <div className="form">
           <form onSubmit={submitHandler}>
             <ul className="form-container">
@@ -147,7 +147,7 @@ function ProductsScreen(props) {
                 <input type="file" onChange={uploadFileHandler}></input>
                 {uploading && <div>Uploading...</div>}
               </li>
-              <li>
+              {/* <li>
                 <label htmlFor="brand">Brand</label>
                 <input
                   type="text"
@@ -156,7 +156,7 @@ function ProductsScreen(props) {
                   id="brand"
                   onChange={(e) => setBrand(e.target.value)}
                 ></input>
-              </li>
+              </li> */}
               <li>
                 <label htmlFor="countInStock">CountInStock</label>
                 <input
@@ -167,7 +167,7 @@ function ProductsScreen(props) {
                   onChange={(e) => setCountInStock(e.target.value)}
                 ></input>
               </li>
-              <li>
+              {/* <li>
                 <label htmlFor="name">Category</label>
                 <input
                   type="text"
@@ -176,7 +176,7 @@ function ProductsScreen(props) {
                   id="category"
                   onChange={(e) => setCategory(e.target.value)}
                 ></input>
-              </li>
+              </li> */}
               <li>
                 <label htmlFor="description">Description</label>
                 <textarea
@@ -194,7 +194,7 @@ function ProductsScreen(props) {
               <li>
                 <button
                   type="button"
-                  onClick={() => setModalVisible(false)}
+                  onClick={() => setModalVisible(false)} //van co the bat duoc cai dong 106 {modalVisible && ... Tai sao lai vay
                   className="button secondary"
                 >
                   Back
@@ -212,8 +212,8 @@ function ProductsScreen(props) {
               <th>ID</th>
               <th>Name</th>
               <th>Price</th>
-              <th>Category</th>
-              <th>Brand</th>
+              {/* <th>Category</th>
+              <th>Brand</th> */}
               <th>Action</th>
             </tr>
           </thead>
@@ -223,10 +223,10 @@ function ProductsScreen(props) {
                 <td>{product._id}</td>
                 <td>{product.name}</td>
                 <td>{product.price}</td>
-                <td>{product.category}</td>
-                <td>{product.brand}</td>
+                {/* <td>{product.category}</td>
+                <td>{product.brand}</td> */}
                 <td>
-                  <button className="button" onClick={() => openModal(product)}>
+                  <button className="button" onClick={() => openModal(product)}> {/*van co the bat duoc cai dong 106 {modalVisible && ... Tai sao lai vay*/}
                     Edit
                   </button>{' '}
                   <button
