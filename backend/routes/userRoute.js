@@ -25,6 +25,9 @@ router.put('/:id', isAuth, async (req, res) => {//isAuth xem trong util.js, cái
 });
 
 router.post('/signin', async (req, res) => {
+
+  console.log("email:",req.body.email);
+  console.log("pass:",req.body.password);
   const signinUser = await User.findOne({
     email: req.body.email,
     password: req.body.password,
@@ -38,7 +41,7 @@ router.post('/signin', async (req, res) => {
       token: getToken(signinUser),
     });
   } else {
-    res.status(401).send({ message: 'Invalid Email or Password.' });
+    res.status(401).send({ message: 'Invalid Email or Password.', email : toString( req.body.email)});
   }
 });
 

@@ -44,10 +44,17 @@ function ProductScreen(props) {
     props.history.push('/cart/' + props.match.params.id + '?qty=' + qty);
   };
 
+  const handleBackToResult = () => {
+    props.history.push('/');
+  };
+
   return (
     <div>
-      <div className="back-to-result">
+      {/* <div className="back-to-result">
         <Link to="/">Back to result</Link>
+      </div> */}
+      <div className="back-to-result">
+        <button onClick={handleBackToResult}>Back to result</button>
       </div>
       {loading ? (
         <div>Loading...</div>
@@ -116,8 +123,8 @@ function ProductScreen(props) {
               </ul>
             </div>
           </div>
-          {/* bỏ đoạn dưới vào sẽ dẫn đến lỗi vì chưa có dữ liệu !! */}
-          {/* <div className="content-margined">
+          {/* ******************************************** */}
+          <div className="content-margined">
             <h2>Reviews</h2>
             {!product.reviews.length && <div>There is no review</div>}
             <ul className="review" id="reviews">
@@ -173,7 +180,7 @@ function ProductScreen(props) {
                 )}
               </li>
             </ul>
-          </div> */}
+          </div>
         </>
       )}
     </div>

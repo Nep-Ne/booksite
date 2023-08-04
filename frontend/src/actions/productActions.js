@@ -33,7 +33,8 @@ const listProducts = (
         '&sortOrder=' +
         sortOrder
     );
-    dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
+    dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });//dispatch ám chỉ phần return trong reducer của redux!!
+    //data ko được gửi trực tiếp vào frontend mà được lấy từ phần redux !!!
   } catch (error) {
     dispatch({ type: PRODUCT_LIST_FAIL, payload: error.message });
   }

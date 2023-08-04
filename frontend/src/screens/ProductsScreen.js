@@ -14,12 +14,12 @@ function ProductsScreen(props) {
   const [price, setPrice] = useState('');
   const [image, setImage] = useState('');
  // const [brand, setBrand] = useState('');
- // const [category, setCategory] = useState('');
+ const [category, setCategory] = useState('');
   const [countInStock, setCountInStock] = useState('');
   const [description, setDescription] = useState('');
   const [uploading, setUploading] = useState(false);
   const productList = useSelector((state) => state.productList);//productList co trong store.js la cai 1 phan cua reducer
-  const { loading, products, error } = productList;
+  const { loading, products, error } = productList;//vậy là dữ liệu từ backend ko được frontend sử dụng trực tiếp mà là dùng gián tiếp thông qua phần state của redux !!!(state của redux được backend gửi dữ liệu trực tiếp)
 
   const productSave = useSelector((state) => state.productSave);
   const {
@@ -54,7 +54,7 @@ function ProductsScreen(props) {
     setDescription(product.description);
     setImage(product.image);
     //setBrand(product.brand);
-   // setCategory(product.category);
+   setCategory(product.category);
     setCountInStock(product.countInStock);
   };
   const submitHandler = (e) => {
@@ -66,7 +66,7 @@ function ProductsScreen(props) {
         price,
         image,
        // brand,
-        //category,
+        category,
         countInStock,
         description,
       })
@@ -167,7 +167,7 @@ function ProductsScreen(props) {
                   onChange={(e) => setCountInStock(e.target.value)}
                 ></input>
               </li>
-              {/* <li>
+              <li>
                 <label htmlFor="name">Category</label>
                 <input
                   type="text"
@@ -176,7 +176,7 @@ function ProductsScreen(props) {
                   id="category"
                   onChange={(e) => setCategory(e.target.value)}
                 ></input>
-              </li> */}
+              </li>
               <li>
                 <label htmlFor="description">Description</label>
                 <textarea
@@ -212,8 +212,8 @@ function ProductsScreen(props) {
               <th>ID</th>
               <th>Name</th>
               <th>Price</th>
-              {/* <th>Category</th>
-              <th>Brand</th> */}
+              <th>Category</th>
+              {/* <th>Brand</th> */}
               <th>Action</th>
             </tr>
           </thead>
@@ -223,8 +223,8 @@ function ProductsScreen(props) {
                 <td>{product._id}</td>
                 <td>{product.name}</td>
                 <td>{product.price}</td>
-                {/* <td>{product.category}</td>
-                <td>{product.brand}</td> */}
+                <td>{product.category}</td>
+                {/* <td>{product.brand}</td> */}
                 <td>
                   <button className="button" onClick={() => openModal(product)}> {/*van co the bat duoc cai dong 106 {modalVisible && ... Tai sao lai vay*/}
                     Edit

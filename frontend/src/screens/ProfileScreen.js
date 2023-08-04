@@ -74,9 +74,9 @@ function ProfileScreen(props) {
             <li>
               <button type="submit" className="button primary">Update</button>
             </li>
-            <li>
+            {/* <li>
               <button type="button" onClick={handleLogout} className="button secondary full-width">Logout</button>
-            </li>
+            </li> */}
 
           </ul>
         </form>

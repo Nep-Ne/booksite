@@ -15,7 +15,7 @@ function HomeScreen(props) {
  const [searchKeyword, setSearchKeyword] = useState('');
   const [sortOrder, setSortOrder] = useState('');
   const category = props.match.params.id ? props.match.params.id : '';
-  const productList = useSelector((state) => state.productList);
+  const productList = useSelector((state) => state.productList);//nơi lấy giá trị từ stored
   const { products, loading, error } = productList;
   const dispatch = useDispatch();
   useEffect(() => {
@@ -45,6 +45,9 @@ function HomeScreen(props) {
         <form onSubmit={submitHandler}>
           <input
             name="searchKeyword"
+            type= "text"
+            // mặc dù nếu ko có chữ type = "text" thì input mặc định là type text nhưng trong file.css  nếu cấu hình cho input thì cần phải có cái dòng type = "text"
+            //thử bỏ là sẽ thấy file .css ko cấu hình dù input vẫn mặc định là type = "text" 
             onChange={(e) => setSearchKeyword(e.target.value)}
           />
           <button type="submit">Search</button>

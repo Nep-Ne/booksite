@@ -7,6 +7,14 @@ body{
   height: 100vh;
   margin: 0;
 }
+
+.full-width {
+  width: 100%;
+}
+ #root {
+  height: 100%;
+} 
+/* cái root để cho các footer có thể cố định ở phần cuối page */
 .grid-container{
   display: grid;
   grid-template-areas: 
@@ -26,6 +34,25 @@ body{
   align-items: center;
   padding: 0.5rem;
 
+}
+/* nếu viết 2 cái giống nhau thì nó chỉ lấy cái thứ 2 (tính từ trên xuống !!) và xem như không có cái thứ 1 */
+.footer
+{
+  grid-area:footer;
+  /* background-color: #1d056d; */
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  color:blue;
+}
+.footer
+{
+  grid-area: footer;
+  background-color: #1d056d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ccc; 
 }
 
 .brand a
@@ -50,11 +77,42 @@ body{
 } */
 
 
+.sidebar {
+  position: fixed;
+  transition: all 0.5s;
+  transform: translateX(-50rem);
+  width: 30rem;
+  background-color: #f0f0f0;
+  height: 100%;
+}
+.sidebar.open {
+  transform: translateX(0);
+}
+
+.sidebar-close-button {
+  border-radius: 50%;
+  border: 0.1rem #000000 solid;
+  width: 3rem;
+  height: 3rem;
+  padding: 0.5rem;
+  font-size: 2rem;
+  padding-top: 0;
+  cursor: pointer;
+  position: absolute;
+  right: 0.5rem;
+  top: 1.5rem;
+}
+
 a{
   text-decoration: none;
 }
 a:hover{
   color:#ff8000
+}
+
+.dropdown-content
+{
+  list-style-type: none;
 }
 
 
@@ -93,10 +151,105 @@ input {
   border-radius: 0.5rem;
 }
 
+.filter {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+.filter li {
+  margin-right: 4rem;
+}
+
+.filter input[type='text'] {
+  width: 250px;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 1.5rem;
+  /* font-size cũng sẽ điều chỉnh chiều cao của box text luôn !! */
+}
+
+/* .filter input {
+  width: 20px;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+} 
+trong trường hợp này ko yêu cầu phần input trong class filter phải khai tường minh type="text" mà sẽ cấu hình dù ko khai báo tường mình type ra
+cái cách phía trên thì bắt buộc phải khai báo tường minh ra !!!
+*/
+
+.filter button[type='submit'] {
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.filter select {
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 1.5rem;
+}
+
+.categories
+{
+  list-style-type: none;
+}
+
+.details
+{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: right;
+  margin: 1rem;
+}
 
 
+.details-image img {
+  border: 1px solid black;
+  padding: 6rem;
+  border-radius: 4px;
+   height: 40rem; 
+}
+
+.details-info ul,.details-action ul {
+  list-style-type: none;
+  padding: 0.5rem;
+}
+
+.details-info
+{
+  border: 1px solid #ccc;
+  width: 200px;
+  height: 100%;
+}
 
 
+.details-action
+{
+  border: 1px solid black;
+  width: 250px;
+  height: 100%;
+  padding: 0.5rem;
+  border-radius: 4px;
+  color: blue;
+
+}
+
+.review
+{
+  list-style-type: none;
+}
 .products
 {
   display: flex;
@@ -118,21 +271,12 @@ flex-wrap: wrap;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   height: 100%;
 }
 .product-image
 {
   max-width: 34rem;
 max-height: 34rem;
-
-}
-.footer
-{
-  grid-area: footer;
-  background-color: #1d056d;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5rem;
 
 }

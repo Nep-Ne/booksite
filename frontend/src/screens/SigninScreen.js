@@ -51,7 +51,8 @@ function SigninScreen(props) {
           <button type="submit" className="button primary">Signin</button>
         </li>
         <li>
-          New to amazona?
+          New to amazona? 
+          {/* {userInfo}  bỏ cái này vào thì sau khi bấm đăng nhập sẽ dẫn đến lỗi web bị frontend luôn nhưng nếu là {password} thì vẫn ổn vì password không có liên quan gì đến khi nhấn nút đăng nhập!!! */}
         </li>
         <li>
           <Link to={redirect === "/" ? "register" : "register?redirect=" + redirect} className="button secondary text-center" >Create your amazona account</Link>
