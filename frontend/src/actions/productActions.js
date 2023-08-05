@@ -19,7 +19,7 @@ import axios from 'axios';
 import Axios from 'axios';
 
 const listProducts = (
- // category = '',
+  category = '',
   searchKeyword = '',
   sortOrder = ''
 ) => async (dispatch) => {
@@ -27,8 +27,9 @@ const listProducts = (
     dispatch({ type: PRODUCT_LIST_REQUEST });
     const { data } = await axios.get(
       '/api/products?' +
-        
-        'searchKeyword=' +
+        'category=' + 
+        category+
+        '&searchKeyword=' +//đừng có quên &
         searchKeyword +
         '&sortOrder=' +
         sortOrder

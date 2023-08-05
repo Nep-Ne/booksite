@@ -5,7 +5,7 @@ import { isAuth, isAdmin } from '../util';
 const router = express.Router();
 
 router.get('/', async (req, res) => {
-  //const category = req.query.category ? { category: req.query.category } : {};
+  const category = req.query.category ? { category:req.query.category  } : {};
   const searchKeyword = req.query.searchKeyword
     ? {
         name: {
@@ -16,10 +16,10 @@ router.get('/', async (req, res) => {
     : {};
   const sortOrder = req.query.sortOrder
     ? req.query.sortOrder === 'lowest'
-      ? { price: 1 }
-      : { price: -1 }
+      ? { price: -1 }
+      : { price: 1 }
     : { _id: -1 };
-  const products = await Product.find({ ...searchKeyword }).sort(
+  const products = await Product.find({ ...searchKeyword,...category } ).sort(
     sortOrder
   );
   res.send(products);
